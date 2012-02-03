@@ -1,0 +1,7 @@
+c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\AzureStorage\bin\Debug\AzureStorage.dll
+c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\AzureStorage\bin\Debug\AzureStorage.pdb
+c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\AzureStorage\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
+c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\AzureStorage\bin\Debug\Microsoft.WindowsAzure.StorageClient.xml
+c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\AzureStorage\obj\Debug\ResolveAssemblyReference.cache
+c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\AzureStorage\obj\Debug\AzureStorage.dll
+c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\AzureStorage\obj\Debug\AzureStorage.pdb

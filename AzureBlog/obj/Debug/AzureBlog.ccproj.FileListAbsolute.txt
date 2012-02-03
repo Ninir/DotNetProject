@@ -1,0 +1,1 @@
+c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\AzureBlog\bin\Debug\ServiceConfiguration.cscfg
