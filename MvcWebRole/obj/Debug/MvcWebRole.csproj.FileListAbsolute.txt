@@ -24,3 +24,7 @@ c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\MvcWebRole\bin\
 c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\MvcWebRole\obj\Debug\ResolveAssemblyReference.cache
 c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\MvcWebRole\obj\Debug\MvcWebRole.dll
 c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\MvcWebRole\obj\Debug\MvcWebRole.pdb
+C:\Users\Augusta\Documents\Visual Studio 2010\Projects\AzureBlog\MvcWebRole\bin\AzureStorage.dll
+C:\Users\Augusta\Documents\Visual Studio 2010\Projects\AzureBlog\MvcWebRole\bin\SqlDatabase.dll
+C:\Users\Augusta\Documents\Visual Studio 2010\Projects\AzureBlog\MvcWebRole\bin\AzureStorage.pdb
+C:\Users\Augusta\Documents\Visual Studio 2010\Projects\AzureBlog\MvcWebRole\bin\SqlDatabase.pdb

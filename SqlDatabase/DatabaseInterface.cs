@@ -48,6 +48,11 @@ namespace SqlDatabase
             return GetOptionType(OptionTypeName);
         }
 
+        public EntityDataModelContainer GetEntities()
+        {
+            return Entities;
+        }
+
         public List<Article> GetHighlightedArticles()
         {
             return (from r in Entities.Articles where r.Published == true && r.Highlight == true orderby r.CreatedAt descending select r).Take((int)GetOption("NumberOfHighlightedArticles", 5)).ToList();

@@ -4,11 +4,381 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl" Namespace="EntityDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005">
-        <EntityContainer Name="EntityDataModelTargetContainer" >
-        </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+    <Schema Namespace="EntityDataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="EntityDataModelStoreContainer">
+    <EntitySet Name="Users" EntityType="EntityDataModel.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Articles" EntityType="EntityDataModel.Store.Articles" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Tags" EntityType="EntityDataModel.Store.Tags" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Comments" EntityType="EntityDataModel.Store.Comments" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Options" EntityType="EntityDataModel.Store.Options" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Credentails" EntityType="EntityDataModel.Store.Credentails" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Groups" EntityType="EntityDataModel.Store.Groups" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Reports" EntityType="EntityDataModel.Store.Reports" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OptionTypes" EntityType="EntityDataModel.Store.OptionTypes" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CredentailUser" EntityType="EntityDataModel.Store.CredentailUser" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CredentailGroup" EntityType="EntityDataModel.Store.CredentailGroup" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ArticleTag" EntityType="EntityDataModel.Store.ArticleTag" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="GroupGroup" Association="EntityDataModel.Store.GroupGroup">
+      <End Role="Children" EntitySet="Groups" />
+      <End Role="Parent" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="UserGroup" Association="EntityDataModel.Store.UserGroup">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Group" EntitySet="Groups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CredentailUser_Credentail" Association="EntityDataModel.Store.FK_CredentailUser_Credentail">
+      <End Role="Credentail" EntitySet="Credentails" />
+      <End Role="CredentailUser" EntitySet="CredentailUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CredentailUser_User" Association="EntityDataModel.Store.FK_CredentailUser_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="CredentailUser" EntitySet="CredentailUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CredentailGroup_Credentail" Association="EntityDataModel.Store.FK_CredentailGroup_Credentail">
+      <End Role="Credentail" EntitySet="Credentails" />
+      <End Role="CredentailGroup" EntitySet="CredentailGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CredentailGroup_Group" Association="EntityDataModel.Store.FK_CredentailGroup_Group">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="CredentailGroup" EntitySet="CredentailGroup" />
+    </AssociationSet>
+    <AssociationSet Name="UserArticle" Association="EntityDataModel.Store.UserArticle">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Articles" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleTag_Article" Association="EntityDataModel.Store.FK_ArticleTag_Article">
+      <End Role="Article" EntitySet="Articles" />
+      <End Role="ArticleTag" EntitySet="ArticleTag" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ArticleTag_Tag" Association="EntityDataModel.Store.FK_ArticleTag_Tag">
+      <End Role="Tag" EntitySet="Tags" />
+      <End Role="ArticleTag" EntitySet="ArticleTag" />
+    </AssociationSet>
+    <AssociationSet Name="CommentArticle" Association="EntityDataModel.Store.CommentArticle">
+      <End Role="Comment" EntitySet="Comments" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="UserComment" Association="EntityDataModel.Store.UserComment">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="ReportUser" Association="EntityDataModel.Store.ReportUser">
+      <End Role="Report" EntitySet="Reports" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="ReportArticle" Association="EntityDataModel.Store.ReportArticle">
+      <End Role="Report" EntitySet="Reports" />
+      <End Role="Article" EntitySet="Articles" />
+    </AssociationSet>
+    <AssociationSet Name="ReportComment" Association="EntityDataModel.Store.ReportComment">
+      <End Role="Report" EntitySet="Reports" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="OptionTypeOption" Association="EntityDataModel.Store.OptionTypeOption">
+      <End Role="OptionType" EntitySet="OptionTypes" />
+      <End Role="Option" EntitySet="Options" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Slug" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ActivationKey" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreatedAt" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Group_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Articles">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Published" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="AllowComments" Type="bit" Nullable="false" DefaultValue="true" />
+    <Property Name="Highlight" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="CommentsCount" Type="int" Nullable="false" DefaultValue="0" />
+    <Property Name="Slug" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Report_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tags">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Slug" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Content" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Published" Type="bit" Nullable="false" DefaultValue="true" />
+    <Property Name="Article_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Report_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Options">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Fullname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="String" Type="nvarchar(max)" Nullable="false" DefaultValue="" />
+    <Property Name="Integer" Type="int" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="Boolean" Type="bit" Nullable="false" />
+    <Property Name="Decimal" Type="decimal" Nullable="false" />
+    <Property Name="OptionType_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Credentails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Parent_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reports">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Solved" Type="bit" Nullable="false" DefaultValue="false" />
+    <Property Name="User_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OptionTypes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CredentailUser">
+    <Key>
+      <PropertyRef Name="Credentails_ID" />
+      <PropertyRef Name="Users_ID" />
+    </Key>
+    <Property Name="Credentails_ID" Type="int" Nullable="false" />
+    <Property Name="Users_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CredentailGroup">
+    <Key>
+      <PropertyRef Name="Credentails_ID" />
+      <PropertyRef Name="Groups_ID" />
+    </Key>
+    <Property Name="Credentails_ID" Type="int" Nullable="false" />
+    <Property Name="Groups_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ArticleTag">
+    <Key>
+      <PropertyRef Name="Articles_ID" />
+      <PropertyRef Name="Tags_ID" />
+    </Key>
+    <Property Name="Articles_ID" Type="int" Nullable="false" />
+    <Property Name="Tags_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="GroupGroup">
+    <End Role="Children" Type="EntityDataModel.Store.Groups" Multiplicity="1" />
+    <End Role="Parent" Type="EntityDataModel.Store.Groups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Children">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Parent">
+        <PropertyRef Name="Parent_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserGroup">
+    <End Role="User" Type="EntityDataModel.Store.Users" Multiplicity="*" />
+    <End Role="Group" Type="EntityDataModel.Store.Groups" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserArticle">
+    <End Role="User" Type="EntityDataModel.Store.Users" Multiplicity="1" />
+    <End Role="Articles" Type="EntityDataModel.Store.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Articles">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CommentArticle">
+    <End Role="Comment" Type="EntityDataModel.Store.Comments" Multiplicity="*" />
+    <End Role="Article" Type="EntityDataModel.Store.Articles" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Article_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UserComment">
+    <End Role="User" Type="EntityDataModel.Store.Users" Multiplicity="1" />
+    <End Role="Comment" Type="EntityDataModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportUser">
+    <End Role="Report" Type="EntityDataModel.Store.Reports" Multiplicity="*" />
+    <End Role="User" Type="EntityDataModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportArticle">
+    <End Role="Report" Type="EntityDataModel.Store.Reports" Multiplicity="1" />
+    <End Role="Article" Type="EntityDataModel.Store.Articles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Article">
+        <PropertyRef Name="Report_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ReportComment">
+    <End Role="Report" Type="EntityDataModel.Store.Reports" Multiplicity="1" />
+    <End Role="Comment" Type="EntityDataModel.Store.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="Report_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OptionTypeOption">
+    <End Role="OptionType" Type="EntityDataModel.Store.OptionTypes" Multiplicity="1" />
+    <End Role="Option" Type="EntityDataModel.Store.Options" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OptionType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Option">
+        <PropertyRef Name="OptionType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CredentailUser_Credentail">
+    <End Role="Credentail" Type="EntityDataModel.Store.Credentails" Multiplicity="1" />
+    <End Role="CredentailUser" Type="EntityDataModel.Store.CredentailUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Credentail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CredentailUser">
+        <PropertyRef Name="Credentails_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CredentailUser_User">
+    <End Role="CredentailUser" Type="EntityDataModel.Store.CredentailUser" Multiplicity="*" />
+    <End Role="User" Type="EntityDataModel.Store.Users" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CredentailUser">
+        <PropertyRef Name="Users_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CredentailGroup_Credentail">
+    <End Role="Credentail" Type="EntityDataModel.Store.Credentails" Multiplicity="1" />
+    <End Role="CredentailGroup" Type="EntityDataModel.Store.CredentailGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Credentail">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CredentailGroup">
+        <PropertyRef Name="Credentails_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CredentailGroup_Group">
+    <End Role="CredentailGroup" Type="EntityDataModel.Store.CredentailGroup" Multiplicity="*" />
+    <End Role="Group" Type="EntityDataModel.Store.Groups" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CredentailGroup">
+        <PropertyRef Name="Groups_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleTag_Article">
+    <End Role="Article" Type="EntityDataModel.Store.Articles" Multiplicity="1" />
+    <End Role="ArticleTag" Type="EntityDataModel.Store.ArticleTag" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Article">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ArticleTag">
+        <PropertyRef Name="Articles_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ArticleTag_Tag">
+    <End Role="ArticleTag" Type="EntityDataModel.Store.ArticleTag" Multiplicity="*" />
+    <End Role="Tag" Type="EntityDataModel.Store.Tags" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Tag">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ArticleTag">
+        <PropertyRef Name="Tags_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="EntityDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
@@ -234,13 +604,201 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
-        <Alias Key="Model" Value="EntityDataModel" />
-        <Alias Key="Target" Value="EntityDataModel.Store" />
-        <EntityContainerMapping CdmEntityContainer="EntityDataModelContainer" StorageEntityContainer="EntityDataModelTargetContainer">
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="EntityDataModelStoreContainer" CdmEntityContainer="EntityDataModelContainer">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.User)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="ActivationKey" ColumnName="ActivationKey" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Articles">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.Article)">
+        <MappingFragment StoreEntitySet="Articles">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="AllowComments" ColumnName="AllowComments" />
+          <ScalarProperty Name="Highlight" ColumnName="Highlight" />
+          <ScalarProperty Name="CommentsCount" ColumnName="CommentsCount" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tags">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.Tag)">
+        <MappingFragment StoreEntitySet="Tags">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.Comment)">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Options">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.Option)">
+        <MappingFragment StoreEntitySet="Options">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Fullname" ColumnName="Fullname" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="String" ColumnName="String" />
+          <ScalarProperty Name="Integer" ColumnName="Integer" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="Boolean" ColumnName="Boolean" />
+          <ScalarProperty Name="Decimal" ColumnName="Decimal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Credentails">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.Credentail)">
+        <MappingFragment StoreEntitySet="Credentails">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.Group)">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.Report)">
+        <MappingFragment StoreEntitySet="Reports">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="Solved" ColumnName="Solved" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OptionTypes">
+      <EntityTypeMapping TypeName="IsTypeOf(EntityDataModel.OptionType)">
+        <MappingFragment StoreEntitySet="OptionTypes">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GroupGroup" TypeName="EntityDataModel.GroupGroup" StoreEntitySet="Groups">
+      <EndProperty Name="Children">
+        <ScalarProperty Name="ID" ColumnName="Parent_ID" />
+      </EndProperty>
+      <EndProperty Name="Parent">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserGroup" TypeName="EntityDataModel.UserGroup" StoreEntitySet="Users">
+      <EndProperty Name="Group">
+        <ScalarProperty Name="ID" ColumnName="Group_ID" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CredentailUser" TypeName="EntityDataModel.CredentailUser" StoreEntitySet="CredentailUser">
+      <EndProperty Name="Credentail">
+        <ScalarProperty Name="ID" ColumnName="Credentails_ID" />
+      </EndProperty>
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="Users_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CredentailGroup" TypeName="EntityDataModel.CredentailGroup" StoreEntitySet="CredentailGroup">
+      <EndProperty Name="Credentail">
+        <ScalarProperty Name="ID" ColumnName="Credentails_ID" />
+      </EndProperty>
+      <EndProperty Name="Group">
+        <ScalarProperty Name="ID" ColumnName="Groups_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserArticle" TypeName="EntityDataModel.UserArticle" StoreEntitySet="Articles">
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="User_ID" />
+      </EndProperty>
+      <EndProperty Name="Articles">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ArticleTag" TypeName="EntityDataModel.ArticleTag" StoreEntitySet="ArticleTag">
+      <EndProperty Name="Article">
+        <ScalarProperty Name="ID" ColumnName="Articles_ID" />
+      </EndProperty>
+      <EndProperty Name="Tag">
+        <ScalarProperty Name="ID" ColumnName="Tags_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="CommentArticle" TypeName="EntityDataModel.CommentArticle" StoreEntitySet="Comments">
+      <EndProperty Name="Article">
+        <ScalarProperty Name="ID" ColumnName="Article_ID" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UserComment" TypeName="EntityDataModel.UserComment" StoreEntitySet="Comments">
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="User_ID" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ReportUser" TypeName="EntityDataModel.ReportUser" StoreEntitySet="Reports">
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="User_ID" />
+      </EndProperty>
+      <EndProperty Name="Report">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ReportArticle" TypeName="EntityDataModel.ReportArticle" StoreEntitySet="Articles">
+      <EndProperty Name="Report">
+        <ScalarProperty Name="ID" ColumnName="Report_ID" />
+      </EndProperty>
+      <EndProperty Name="Article">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ReportComment" TypeName="EntityDataModel.ReportComment" StoreEntitySet="Comments">
+      <EndProperty Name="Report">
+        <ScalarProperty Name="ID" ColumnName="Report_ID" />
+      </EndProperty>
+      <EndProperty Name="Comment">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="OptionTypeOption" TypeName="EntityDataModel.OptionTypeOption" StoreEntitySet="Options">
+      <EndProperty Name="OptionType">
+        <ScalarProperty Name="ID" ColumnName="OptionType_ID" />
+      </EndProperty>
+      <EndProperty Name="Option">
+        <ScalarProperty Name="ID" ColumnName="ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
