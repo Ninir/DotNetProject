@@ -87,10 +87,9 @@
     <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Username" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Slug" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="ActivationKey" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="CreatedAt" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Group_ID" Type="int" Nullable="false" />
+    <Property Name="ActivationKey" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+    <Property Name="Group_ID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Articles">
     <Key>
@@ -106,7 +105,7 @@
     <Property Name="CommentsCount" Type="int" Nullable="false" DefaultValue="0" />
     <Property Name="Slug" Type="nvarchar(max)" Nullable="false" />
     <Property Name="User_ID" Type="int" Nullable="false" />
-    <Property Name="Report_ID" Type="int" Nullable="false" />
+    <Property Name="Report_ID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Tags">
     <Key>
@@ -126,7 +125,7 @@
     <Property Name="Published" Type="bit" Nullable="false" DefaultValue="true" />
     <Property Name="Article_ID" Type="int" Nullable="false" />
     <Property Name="User_ID" Type="int" Nullable="false" />
-    <Property Name="Report_ID" Type="int" Nullable="false" />
+    <Property Name="Report_ID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="Options">
     <Key>
@@ -165,7 +164,7 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CreatedAt" Type="datetime" Nullable="false" />
     <Property Name="Solved" Type="bit" Nullable="false" DefaultValue="false" />
-    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="User_ID" Type="int" Nullable="true" />
   </EntityType>
   <EntityType Name="OptionTypes">
     <Key>
@@ -212,7 +211,7 @@
   </Association>
   <Association Name="UserGroup">
     <End Role="User" Type="EntityDataModel.Store.Users" Multiplicity="*" />
-    <End Role="Group" Type="EntityDataModel.Store.Groups" Multiplicity="1" />
+    <End Role="Group" Type="EntityDataModel.Store.Groups" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="Group">
         <PropertyRef Name="ID" />
@@ -260,7 +259,7 @@
   </Association>
   <Association Name="ReportUser">
     <End Role="Report" Type="EntityDataModel.Store.Reports" Multiplicity="*" />
-    <End Role="User" Type="EntityDataModel.Store.Users" Multiplicity="1" />
+    <End Role="User" Type="EntityDataModel.Store.Users" Multiplicity="0..1" />
     <ReferentialConstraint>
       <Principal Role="User">
         <PropertyRef Name="ID" />
@@ -271,7 +270,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="ReportArticle">
-    <End Role="Report" Type="EntityDataModel.Store.Reports" Multiplicity="1" />
+    <End Role="Report" Type="EntityDataModel.Store.Reports" Multiplicity="0..1" />
     <End Role="Article" Type="EntityDataModel.Store.Articles" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Report">
@@ -283,7 +282,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="ReportComment">
-    <End Role="Report" Type="EntityDataModel.Store.Reports" Multiplicity="1" />
+    <End Role="Report" Type="EntityDataModel.Store.Reports" Multiplicity="0..1" />
     <End Role="Comment" Type="EntityDataModel.Store.Comments" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Report">
@@ -449,12 +448,11 @@
           <Property Type="String" Name="Mail" Nullable="false" />
           <Property Type="String" Name="Password" Nullable="false" />
           <Property Type="String" Name="Username" Nullable="false" />
-          <Property Type="String" Name="Slug" Nullable="false" />
-          <Property Type="String" Name="ActivationKey" Nullable="false" />
+          <Property Type="String" Name="ActivationKey" Nullable="true" />
           <NavigationProperty Name="Group" Relationship="EntityDataModel.UserGroup" FromRole="User" ToRole="Group" />
           <NavigationProperty Name="Credentails" Relationship="EntityDataModel.CredentailUser" FromRole="User" ToRole="Credentail" />
           <NavigationProperty Name="Articles" Relationship="EntityDataModel.UserArticle" FromRole="User" ToRole="Articles" />
-          <Property Type="String" Name="CreatedAt" Nullable="false" />
+          <Property Type="DateTime" Name="CreatedAt" Nullable="false" />
           <NavigationProperty Name="Comments" Relationship="EntityDataModel.UserComment" FromRole="User" ToRole="Comment" />
           <NavigationProperty Name="Reports" Relationship="EntityDataModel.ReportUser" FromRole="User" ToRole="Report" />
         </EntityType>
@@ -538,7 +536,7 @@
         </Association>
         <Association Name="UserGroup">
           <End Type="EntityDataModel.User" Role="User" Multiplicity="*" />
-          <End Type="EntityDataModel.Group" Role="Group" Multiplicity="1" />
+          <End Type="EntityDataModel.Group" Role="Group" Multiplicity="0..1" />
         </Association>
         <Association Name="CredentailUser">
           <End Type="EntityDataModel.Credentail" Role="Credentail" Multiplicity="*" >
@@ -578,14 +576,14 @@
         </EntityType>
         <Association Name="ReportUser">
           <End Type="EntityDataModel.Report" Role="Report" Multiplicity="*" />
-          <End Type="EntityDataModel.User" Role="User" Multiplicity="1" />
+          <End Type="EntityDataModel.User" Role="User" Multiplicity="0..1" />
         </Association>
         <Association Name="ReportArticle">
-          <End Type="EntityDataModel.Report" Role="Report" Multiplicity="1" />
+          <End Type="EntityDataModel.Report" Role="Report" Multiplicity="0..1" />
           <End Type="EntityDataModel.Article" Role="Article" Multiplicity="0..1" />
         </Association>
         <Association Name="ReportComment">
-          <End Type="EntityDataModel.Report" Role="Report" Multiplicity="1" />
+          <End Type="EntityDataModel.Report" Role="Report" Multiplicity="0..1" />
           <End Type="EntityDataModel.Comment" Role="Comment" Multiplicity="0..1" />
         </Association>
         <EntityType Name="OptionType">
@@ -613,7 +611,6 @@
           <ScalarProperty Name="Mail" ColumnName="Mail" />
           <ScalarProperty Name="Password" ColumnName="Password" />
           <ScalarProperty Name="Username" ColumnName="Username" />
-          <ScalarProperty Name="Slug" ColumnName="Slug" />
           <ScalarProperty Name="ActivationKey" ColumnName="ActivationKey" />
           <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
         </MappingFragment>
@@ -716,6 +713,7 @@
       <EndProperty Name="User">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
+      <Condition ColumnName="Group_ID" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="CredentailUser" TypeName="EntityDataModel.CredentailUser" StoreEntitySet="CredentailUser">
       <EndProperty Name="Credentail">
@@ -772,6 +770,7 @@
       <EndProperty Name="Report">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
+      <Condition ColumnName="User_ID" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="ReportArticle" TypeName="EntityDataModel.ReportArticle" StoreEntitySet="Articles">
       <EndProperty Name="Report">
@@ -780,6 +779,7 @@
       <EndProperty Name="Article">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
+      <Condition ColumnName="Report_ID" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="ReportComment" TypeName="EntityDataModel.ReportComment" StoreEntitySet="Comments">
       <EndProperty Name="Report">
@@ -788,6 +788,7 @@
       <EndProperty Name="Comment">
         <ScalarProperty Name="ID" ColumnName="ID" />
       </EndProperty>
+      <Condition ColumnName="Report_ID" IsNull="false" />
     </AssociationSetMapping>
     <AssociationSetMapping Name="OptionTypeOption" TypeName="EntityDataModel.OptionTypeOption" StoreEntitySet="Options">
       <EndProperty Name="OptionType">
@@ -816,7 +817,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="EntityDataModel" >
-        <EntityTypeShape EntityType="EntityDataModel.User" Width="1.5" PointX="3.25" PointY="3.875" Height="3.3263964843749996" />
+        <EntityTypeShape EntityType="EntityDataModel.User" Width="1.5" PointX="3.25" PointY="3.875" Height="3.1340950520833335" />
         <EntityTypeShape EntityType="EntityDataModel.Article" Width="1.5" PointX="7.75" PointY="2.25" Height="3.5186979166666665" />
         <EntityTypeShape EntityType="EntityDataModel.Tag" Width="1.5" PointX="5.625" PointY="2" Height="1.787985026041667" />
         <EntityTypeShape EntityType="EntityDataModel.Comment" Width="1.5" PointX="7.75" PointY="6.25" Height="2.3648893229166674" />
@@ -830,13 +831,13 @@
           <ConnectorPoint PointX="1.9784615384615383" PointY="7.172587890625" />
         </AssociationConnector>
         <AssociationConnector Association="EntityDataModel.UserGroup">
-          <ConnectorPoint PointX="3.25" PointY="6.0862939453125" />
-          <ConnectorPoint PointX="2.5" PointY="6.0862939453125" />
+          <ConnectorPoint PointX="3.25" PointY="6.0045475260416667" />
+          <ConnectorPoint PointX="2.5" PointY="6.0045475260416667" />
         </AssociationConnector>
         <AssociationConnector Association="EntityDataModel.CredentailUser">
-          <ConnectorPoint PointX="2.5" PointY="3.3050434453124997" />
-          <ConnectorPoint PointX="3.53125" PointY="3.3050434453124997" />
-          <ConnectorPoint PointX="3.53125" PointY="3.875" />
+          <ConnectorPoint PointX="2.5" PointY="3.1249994999999995" />
+          <ConnectorPoint PointX="4" PointY="3.1249994999999995" />
+          <ConnectorPoint PointX="4" PointY="3.875" />
         </AssociationConnector>
         <AssociationConnector Association="EntityDataModel.CredentailGroup">
           <ConnectorPoint PointX="1.75" PointY="4.1629850260416656" />
@@ -855,8 +856,8 @@
           <ConnectorPoint PointX="8.5" PointY="5.7686979166666665" />
         </AssociationConnector>
         <AssociationConnector Association="EntityDataModel.UserComment">
-          <ConnectorPoint PointX="4.75" PointY="7.0307421875" />
-          <ConnectorPoint PointX="7.75" PointY="7.0307421875" />
+          <ConnectorPoint PointX="4.75" PointY="6.9345914713541665" />
+          <ConnectorPoint PointX="7.75" PointY="6.9345914713541665" />
         </AssociationConnector>
         <EntityTypeShape EntityType="EntityDataModel.Report" Width="1.5" PointX="5.625" PointY="4.625" Height="2.1725878906249996" />
         <AssociationConnector Association="EntityDataModel.ReportUser">

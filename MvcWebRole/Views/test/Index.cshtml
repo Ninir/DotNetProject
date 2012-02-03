@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@foreach (var Article in ViewBag.Articles)
+{
+    <h3>@Article.Title</h3>
+    <i>@Article.CreatedAt</i>
+    <p>@Article.Content</p>
+}

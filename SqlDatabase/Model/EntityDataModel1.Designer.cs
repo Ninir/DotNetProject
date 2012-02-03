@@ -19,16 +19,16 @@ using System.Runtime.Serialization;
 #region Métadonnées de relation EDM
 
 [assembly: EdmRelationshipAttribute("EntityDataModel", "GroupGroup", "Children", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.Group), "Parent", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Group))]
-[assembly: EdmRelationshipAttribute("EntityDataModel", "UserGroup", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.User), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.Group))]
+[assembly: EdmRelationshipAttribute("EntityDataModel", "UserGroup", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.User), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SqlDatabase.Model.Group))]
 [assembly: EdmRelationshipAttribute("EntityDataModel", "CredentailUser", "Credentail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Credentail), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.User))]
 [assembly: EdmRelationshipAttribute("EntityDataModel", "CredentailGroup", "Credentail", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Credentail), "Group", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Group))]
 [assembly: EdmRelationshipAttribute("EntityDataModel", "UserArticle", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.User), "Articles", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Article))]
 [assembly: EdmRelationshipAttribute("EntityDataModel", "ArticleTag", "Article", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Article), "Tag", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Tag))]
 [assembly: EdmRelationshipAttribute("EntityDataModel", "CommentArticle", "Comment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Comment), "Article", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.Article))]
 [assembly: EdmRelationshipAttribute("EntityDataModel", "UserComment", "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.User), "Comment", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Comment))]
-[assembly: EdmRelationshipAttribute("EntityDataModel", "ReportUser", "Report", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Report), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.User))]
-[assembly: EdmRelationshipAttribute("EntityDataModel", "ReportArticle", "Report", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.Report), "Article", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SqlDatabase.Model.Article))]
-[assembly: EdmRelationshipAttribute("EntityDataModel", "ReportComment", "Report", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.Report), "Comment", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SqlDatabase.Model.Comment))]
+[assembly: EdmRelationshipAttribute("EntityDataModel", "ReportUser", "Report", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Report), "User", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SqlDatabase.Model.User))]
+[assembly: EdmRelationshipAttribute("EntityDataModel", "ReportArticle", "Report", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SqlDatabase.Model.Report), "Article", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SqlDatabase.Model.Article))]
+[assembly: EdmRelationshipAttribute("EntityDataModel", "ReportComment", "Report", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SqlDatabase.Model.Report), "Comment", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(SqlDatabase.Model.Comment))]
 [assembly: EdmRelationshipAttribute("EntityDataModel", "OptionTypeOption", "OptionType", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(SqlDatabase.Model.OptionType), "Option", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(SqlDatabase.Model.Option))]
 
 #endregion
@@ -2029,18 +2029,14 @@ namespace SqlDatabase.Model
         /// <param name="mail">Valeur initiale de la propriété Mail.</param>
         /// <param name="password">Valeur initiale de la propriété Password.</param>
         /// <param name="username">Valeur initiale de la propriété Username.</param>
-        /// <param name="slug">Valeur initiale de la propriété Slug.</param>
-        /// <param name="activationKey">Valeur initiale de la propriété ActivationKey.</param>
         /// <param name="createdAt">Valeur initiale de la propriété CreatedAt.</param>
-        public static User CreateUser(global::System.Int32 id, global::System.String mail, global::System.String password, global::System.String username, global::System.String slug, global::System.String activationKey, global::System.String createdAt)
+        public static User CreateUser(global::System.Int32 id, global::System.String mail, global::System.String password, global::System.String username, global::System.DateTime createdAt)
         {
             User user = new User();
             user.ID = id;
             user.Mail = mail;
             user.Password = password;
             user.Username = username;
-            user.Slug = slug;
-            user.ActivationKey = activationKey;
             user.CreatedAt = createdAt;
             return user;
         }
@@ -2150,31 +2146,7 @@ namespace SqlDatabase.Model
         /// <summary>
         /// Aucune documentation sur les métadonnées n'est disponible.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String Slug
-        {
-            get
-            {
-                return _Slug;
-            }
-            set
-            {
-                OnSlugChanging(value);
-                ReportPropertyChanging("Slug");
-                _Slug = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("Slug");
-                OnSlugChanged();
-            }
-        }
-        private global::System.String _Slug;
-        partial void OnSlugChanging(global::System.String value);
-        partial void OnSlugChanged();
-    
-        /// <summary>
-        /// Aucune documentation sur les métadonnées n'est disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String ActivationKey
         {
@@ -2186,7 +2158,7 @@ namespace SqlDatabase.Model
             {
                 OnActivationKeyChanging(value);
                 ReportPropertyChanging("ActivationKey");
-                _ActivationKey = StructuralObject.SetValidValue(value, false);
+                _ActivationKey = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("ActivationKey");
                 OnActivationKeyChanged();
             }
@@ -2200,7 +2172,7 @@ namespace SqlDatabase.Model
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
-        public global::System.String CreatedAt
+        public global::System.DateTime CreatedAt
         {
             get
             {
@@ -2210,13 +2182,13 @@ namespace SqlDatabase.Model
             {
                 OnCreatedAtChanging(value);
                 ReportPropertyChanging("CreatedAt");
-                _CreatedAt = StructuralObject.SetValidValue(value, false);
+                _CreatedAt = StructuralObject.SetValidValue(value);
                 ReportPropertyChanged("CreatedAt");
                 OnCreatedAtChanged();
             }
         }
-        private global::System.String _CreatedAt;
-        partial void OnCreatedAtChanging(global::System.String value);
+        private global::System.DateTime _CreatedAt;
+        partial void OnCreatedAtChanging(global::System.DateTime value);
         partial void OnCreatedAtChanged();
 
         #endregion
