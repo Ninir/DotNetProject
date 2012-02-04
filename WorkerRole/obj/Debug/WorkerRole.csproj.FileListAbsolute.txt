@@ -8,13 +8,3 @@ c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\WorkerRole\bin\
 c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\WorkerRole\obj\Debug\ResolveAssemblyReference.cache
 c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\WorkerRole\obj\Debug\WorkerRole.dll
 c:\users\augusta\documents\visual studio 2010\Projects\AzureBlog\WorkerRole\obj\Debug\WorkerRole.pdb
-C:\wamp\www\DotNetProject\WorkerRole\bin\Debug\WorkerRole.dll.config
-C:\wamp\www\DotNetProject\WorkerRole\bin\Debug\WorkerRole.dll
-C:\wamp\www\DotNetProject\WorkerRole\bin\Debug\WorkerRole.pdb
-C:\wamp\www\DotNetProject\WorkerRole\bin\Debug\Microsoft.WindowsAzure.Diagnostics.dll
-C:\wamp\www\DotNetProject\WorkerRole\bin\Debug\Microsoft.WindowsAzure.StorageClient.dll
-C:\wamp\www\DotNetProject\WorkerRole\bin\Debug\Microsoft.WindowsAzure.Diagnostics.xml
-C:\wamp\www\DotNetProject\WorkerRole\bin\Debug\Microsoft.WindowsAzure.StorageClient.xml
-C:\wamp\www\DotNetProject\WorkerRole\obj\Debug\ResolveAssemblyReference.cache
-C:\wamp\www\DotNetProject\WorkerRole\obj\Debug\WorkerRole.dll
-C:\wamp\www\DotNetProject\WorkerRole\obj\Debug\WorkerRole.pdb

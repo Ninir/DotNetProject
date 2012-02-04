@@ -1,5 +1,0 @@
-C:\wamp\www\DotNetProject\SqlDatabase\obj\Debug\ResolveAssemblyReference.cache
-C:\wamp\www\DotNetProject\SqlDatabase\bin\Debug\SqlDatabase.dll
-C:\wamp\www\DotNetProject\SqlDatabase\bin\Debug\SqlDatabase.pdb
-C:\wamp\www\DotNetProject\SqlDatabase\obj\Debug\SqlDatabase.dll
-C:\wamp\www\DotNetProject\SqlDatabase\obj\Debug\SqlDatabase.pdb
