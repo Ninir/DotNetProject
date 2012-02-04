@@ -1,0 +1,38 @@
+﻿@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    ViewBag.Title = "Administration | Index";
+}
+
+<h2>Article List</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Preview</th>
+            <th>Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>Test 1</td>
+            <td>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum...</td>
+            <td>30/01/2012</td>
+            <td>
+                <a href="#"><i class="pencil"></i></a>
+                <a href="#"><i class="remove"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div class="pagination">
+    <ul>
+        <li><a href="#">«</a></li>
+        <li><a href="#">1</a></li>
+        <li class="active"><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">»</a></li>
+    </ul>
+</div>

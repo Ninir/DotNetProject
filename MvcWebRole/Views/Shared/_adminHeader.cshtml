@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "_adminHeader";
+}
+
+<div class="navbar navbar-fixed">
+    <div class="navbar-inner">
+        <div class="container">
+            <a href="@Url.Action("admin_home")" class="brand">Home</a>
+            <ul class="nav">
+                <li class="active">
+                    <a href="#">Article List</a>
+                </li>
+                <li class="">
+                    <a href="#">Add article</a>
+                </li>
+            </ul>
+            <ul class="nav pull-right">
+                <li class="vertical-divider"></li>
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Return to the blog</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><i class="off"></i>Log Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

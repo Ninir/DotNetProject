@@ -1,0 +1,14 @@
+
+.admin-content {
+    position: relative;
+    top: 40px;
+}
+
+.pagination {
+    margin: 0 auto;
+    width: 220px;
+}
+
+input {
+    height: 28px;
+}

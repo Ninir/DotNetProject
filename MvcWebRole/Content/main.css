@@ -1,0 +1,157 @@
+
+body {
+    background-color: #353535;
+    font-family: Segoe UI,Helvetica,sans-serif;
+    color: #FFF;
+}
+
+#wrapper {
+    background-color: #353535;
+}
+
+/* --------------------- Header ---------------------- */
+.header {
+    background-color: #1BA1E2;
+    color: #FFFFFF;
+    display: inline-block;
+    width: 100%;
+}
+
+.header .header-content {
+    background: url("../images/logo.png") no-repeat scroll 10px 10px transparent;
+    display: inline-block;
+    padding-bottom: 30px;
+    padding-left: 160px;
+    vertical-align: top;
+}
+
+.header a {
+    font-weight: normal;
+}
+
+/* --------------------- Article ---------------------- */
+.article {
+    padding: 10px 0;
+}
+
+.article .article-header .article-post-date{
+    background: none repeat scroll 0 0 #6BBD46;
+    color: #FFFFFF;
+    display: block;
+    padding: 8px;
+    width: 34;
+    height: 34;
+    display: inline-block;
+}
+
+.article .article-header .article-post-date .month {
+    font-size: 17px;
+    font-weight: bold;
+    height: 20px;
+    line-height: 17px;
+    text-transform: uppercase;
+}
+
+.article .article-header .article-post-date .day {
+    border-right: 1px solid #FFFFFF;
+    float: left;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
+    font-size: 17px;
+    height: 16px;
+    line-height: 16px;
+    width: 60%;
+}
+
+.article .article-header .article-post-date .year {
+    font-size: 10px;
+    line-height: 9px;
+    width: 30%;
+    float: right;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.article .article-header .article-title {
+    display: inline-block;
+    font-size: 24px;
+    font-weight: normal;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.article .article-header .article-title a {
+    text-decoration: none;
+}
+
+.article .article-content {
+    font-size: 17px;
+    line-height: 25px;
+    padding: 10px 0;
+}
+
+.article .article-content a.more {
+    background-color: #1BA1E2;
+    padding: 1px 10px;
+}
+
+.article .article-content a.more:hover {
+    color: #FFF;
+    text-decoration: none;
+    background-color: #77c532;
+}
+
+.article .article-details, .article .article-tags {
+    text-align: right;
+}
+.article .article-details {}
+.article .article-tags a { font-style: italic; }
+
+.article.details .article-content {
+    padding-bottom: 50px;
+}
+
+/* --------------------- Footer ---------------------- */
+
+.footer {
+    border-top: 1px solid #DEDEDE;
+}
+
+/* ----------------------- Tile ----------------------- */
+.tile {
+    background-color: #1BA1E2;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.tile:hover {
+    background-color: #77c532;
+}
+
+.tile a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* --------------------- Pagination ---------------------- */
+.pagination {
+    margin: 20px auto;
+    width: 200px;
+}
+
+.pagination .pagination-item {
+    background: none repeat scroll 0 0 #1BA1E2;
+    display: inline-block;
+    padding: 0 10px;
+    text-align: center;
+}
+
+.pagination .pagination-item.link:hover {
+    background-color: #6BBD46;
+}
+
+.pagination .pagination-item a:hover {
+    text-decoration: none;
+}

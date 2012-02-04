@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "_blogSidebar";
+}
+
+<aside class="sidebar">
+    <!-- Si loggé ... -->
+    <div class="tile">
+        Bienvenue, <span>Administrateur</span>
+        Vous avez <a href="#">[nb_articles]</a> en attente.
+    </div>
+    <div class="tile">
+        <h4><a href="#">Categories</a></h4>
+        <ul>
+            <li><a href="#">Articles</a></li>
+        </ul>
+    </div>
+    <div class="tile">
+        <h4><a href="#">Social</a></h4>
+        <ul>
+            <li><a href="#">Facebook</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">RSS</a></li>
+            <li><a href="#">Google+</a></li>
+        </ul>
+    </div>
+    <div class="tile">
+        <h4><a href="@Url.Action("Admin")">Administration</a></h4>
+    </div>
+</aside>

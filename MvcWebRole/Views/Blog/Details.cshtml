@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Blog.cshtml";
+    ViewBag.Title = "WP Blog - Main";
+}
+
+<div id="latest">
+    <section class="left-col">
+        <div class="article details" id="article-185">
+            <div class="article-header">
+                <div class="article-post-date">
+                    <div class="month">Jan</div>
+                    <div class="day">27</div>
+                    <div class="year">20<br>12</div>
+                </div>
+                <h4 class="article-title"><a href="#">Blog 1</a></h4>
+            </div>
+            <p class="article-content">
+                Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum...<br/><br/>
+                Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum...<br/><br/>
+                Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum...Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum...Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum...Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Maecenas faucibus mollis interdum...<br/>
+            </p>
+            <p class="article-details">Written by <a href="#">Administrator</a></p>
+            <p class="article-tags">Tags: <a href="#">Windows</a>, <a href="#">Phone</a>, <a href="#">WPIT</a>, <a href="#">Lorem Ipsum</a></p>
+        </div>
+    </section>
+    @{
+        Html.RenderPartial("~/Views/Shared/_blogSidebar.cshtml");
+    }
+</div>
+<div class="clearfix"></div>
