@@ -1,0 +1,30 @@
+﻿@{
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    ViewBag.Title = "Administration | Index";
+}
+
+<h2>Add Article</h2>
+<form action="?" method="POST" class="form-horizontal">
+    <fieldset class="control-group">
+        <label class="control-label">Name</label>
+        <div class="controls">
+            <input type="text" name="input01" class="xlarge">
+        </div>
+    </fieldset>
+    <fieldset class="control-group">
+        <label class="control-label">Content</label>
+        <div class="controls">
+            <textarea name="textarea" class="xlarge"></textarea>
+        </div>
+    </fieldset>
+    <fieldset class="control-group">
+        <label class="control-label">Tags</label>
+        <div class="controls">
+            <input type="text" name="input01" class="xlarge">
+        </div>
+    </fieldset>
+    <fieldset class="form-actions">
+        <button class="btn primary" type="submit">Add Article</button>
+        <button class="btn" type="reset">Cancel</button>
+    </fieldset>
+</form>

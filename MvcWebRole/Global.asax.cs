@@ -21,12 +21,24 @@ namespace MvcWebRole
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
-            );
+            /**
+             * Blog Routes
+             */
+            routes.MapRoute("Blog_Main", "Blog/", new { controller = "BlogArticle", action = "Index" });
+            routes.MapRoute("Blog_Article_Details", "Blog/Article/{articleId}", new { controller = "BlogArticle", action = "Details" }, new { articleId = @"\d+" });
 
+            /**
+             * Admin Routes
+             */
+            routes.MapRoute("Admin", "Admin/", new { controller = "AdminMain", action = "Index" });
+
+            /**
+             * Default Routes
+             */
+            routes.MapRoute("Default", // Route name 
+                            "{controller}/{action}/{id}", // URL with parameters 
+                            new { controller = "BlogArticle", action = "Index", id = "" } // Parameter defaults 
+            ); 
         }
 
         protected void Application_Start()

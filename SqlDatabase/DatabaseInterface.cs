@@ -18,6 +18,8 @@ namespace SqlDatabase
 
         public object GetOption(string OptionName, object DefaultValue)
         {
+            return false;
+            /*
             Option Option = (from r in Entities.Options where r.Name == OptionName select r).FirstOrDefault();
             if (Option == null)
             {
@@ -60,7 +62,6 @@ namespace SqlDatabase
                 {
                     return null;
                 }
-                NewOption.
             }
             else
             {
@@ -73,6 +74,7 @@ namespace SqlDatabase
                     case Configuration.DefaultOptionType.String:   return Option.String;
                 }
             }
+             */
         }
         private OptionType GetOptionType(string OptionTypeName)
         {
@@ -88,7 +90,8 @@ namespace SqlDatabase
 
         public List<Article> GetHighlight()
         {
-            return (from r in Entities.Articles where r.Published == true && r.Highlight == true orderby r.CreatedAt descending select r).Take(Configuration.DefaultOptions["NumberOfHighlightedArticles"].Value).ToList();
+            return null;
+            //return (from r in Entities.Articles where r.Published == true && r.Highlight == true orderby r.CreatedAt descending select r).Take(Configuration.DefaultOptions["NumberOfHighlightedArticles"].Value).ToList();
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Blog.cshtml";
+    ViewBag.Title = "WP Blog - Main";
+}
+
+<div id="latest">
+    <section class="left-col">
+        @{
+            Html.RenderPartial("~/Views/Shared/_article.cshtml");
+        }
+        <hr/>
+        <div class="pagination">
+            <div class="pagination-item link"><a href="#">&larr; 1</a></div>
+            <div class="pagination-item">...</div>
+            <div class="pagination-item link"><a href="#">3</a></div>
+            <div class="pagination-item">...</div>
+            <div class="pagination-item link"><a href="#">5 &rarr;</a></div>
+        </div>
+    </section>
+    @{
+        Html.RenderPartial("~/Views/Shared/_blogSidebar.cshtml");
+    }
+</div>
+<div class="clearfix"></div>

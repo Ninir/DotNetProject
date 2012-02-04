@@ -1,0 +1,52 @@
+
+form.login {
+    background-color: #1BA1E2;
+    margin-left: 33%;
+    margin-top: 10%;
+    padding: 30px 30px 0;
+    width: 300px;
+}
+
+form.login .title {
+    border-bottom: 1px solid #FFFFFF;
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+form.login .link {
+    float: left;
+    font-size: 13px;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+.form-row {
+    margin: 15px 0;
+}
+
+.form-row label {
+    display: inline-block;
+    margin-right: 20px;
+    text-align: right;
+    width: 30%;
+}
+
+.form-row input {
+    border: 1px solid #CCCCCC;
+    border-radius: 3px 3px 3px 3px;
+    padding: 5px 10px;
+}
+
+.form-row input:focus {
+    border: 1px solid #FFFFFF;
+    box-shadow: 0 0 5px #FFFFFF;
+}
+
+.submit {
+    border: medium none;
+    color: #FFFFFF;
+    float: right;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
