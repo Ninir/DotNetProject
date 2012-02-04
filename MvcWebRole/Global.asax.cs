@@ -24,7 +24,7 @@ namespace MvcWebRole
             /**
              * Blog Routes
              */
-            routes.MapRoute("Blog_Main", "Blog/", new { controller = "BlogArticle", action = "Index" });
+            routes.MapRoute("Blog_Main", "Blog", new { controller = "BlogArticle", action = "Index" });
             routes.MapRoute("Blog_Article_Details", "Blog/Article/{articleId}", new { controller = "BlogArticle", action = "Details" }, new { articleId = @"\d+" });
 
             /**
