@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Controllers\Administration\AdminArticleController.cs" />
     <Compile Include="Controllers\Administration\AdminMainController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\Blog\BlogArticleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
