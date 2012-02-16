@@ -14,6 +14,12 @@ namespace MvcWebRole.Controllers.Blog
         public ActionResult Index()
         {
             List<Article> FrontPageArticles = _database.GetHighlightedArticles();
+            List<Article> SomeArticles = (from a in _database.Articles where a.Title.StartsWith("A") select a).ToList();
+            List<Article> SameArticles = _database.Articles.Where(a => a.Title.StartsWith("A")).ToList();
+
+            List<Comment> AllComments = new List<Comment>();
+            SomeArticles.ForEach(a => AllComments.AddRange(a.Comments));
+
 
             return View("~/Views/Blog/Index.cshtml");
         }

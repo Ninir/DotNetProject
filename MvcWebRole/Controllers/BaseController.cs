@@ -11,6 +11,10 @@ namespace MvcWebRole.Controllers
     {
         protected DatabaseInterface _database;
 
+        /// <summary>
+        /// Start a controller
+        /// </summary>
+        /// <param name="InitiateDatabase"></param>
         public BaseController(bool InitiateDatabase)
         {
             if (InitiateDatabase)
